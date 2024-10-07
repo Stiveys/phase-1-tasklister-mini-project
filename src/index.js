@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     editButton.addEventListener("click", () => {
       const newDescription = prompt("Edit your task:", taskDescription);
 
+
       if (newDescription) {
         newTaskItem.firstChild.textContent = newDescription;
       }
