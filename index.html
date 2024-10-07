@@ -12,6 +12,23 @@
     <form id="create-task-form" action="" method="POST">
       <label for="new-task-description">Task description:</label>
       <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+
+  <label for="task-priority">Priority:</label>
+  <select id="task-priority" name="task-priority">
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+
+  <label for="task-user">User:</label>
+  <input type="text" id="task-user" name="task-user" placeholder="User" required>
+
+  <label for="task-duration">Duration (in hours):</label>
+  <input type="number" id="task-duration" name="task-duration" placeholder="Duration" required>
+
+  <label for="task-due-date">Due Date:</label>
+  <input type="date" id="task-due-date" name="task-due-date" required>
+
       <input type="submit" value="Create New Task">
     </form>
 
@@ -25,4 +42,16 @@
   </div>
 
 </body>
-</html>
+</html> // The code below ensures that students who are using CodeGrade will get credit
+// for the code-along in Canvas; you can disregard it.
+
+require("./helpers.js");
+
+describe("", () => {
+  describe("", () => {
+    it("Test passing", () => {
+      return true;
+    });
+  });
+});
+
