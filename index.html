@@ -4,7 +4,7 @@
 
   <meta charset="UTF-8">
   <title>Flatiron Task Lister</title>
-  <link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
 
@@ -13,15 +13,19 @@
 
     <form id="create-task-form" action="" method="POST">
       <label for="new-task-description">Task description:</label>
+      
       <input type="text" id="new-task-description" name="new-task-description" placeholder="description" required>
 
       <label for="task-user">User:</label>
+
       <input type="text" id="task-user" name="task-user" placeholder="User" required>
 
       <label for="task-duration">Duration (in hours):</label>
+
       <input type="number" id="task-duration" name="task-duration" placeholder="Duration" required>
 
       <label for="task-due-date">Due Date:</label>
+
       <input type="date" id="task-due-date" name="task-due-date" required>
 
       <label for="task-priority">Priority:</label>
@@ -39,6 +43,8 @@
       <ul id="tasks"></ul>
     </div>
 
+
+    <link rel="stylesheet" href="./style.css">
     <button id="sort-tasks">Sort Tasks by Priority</button>
 
     <script src="./src/index.js"></script>
