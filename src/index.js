@@ -3,15 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskList = document.getElementById("tasks");
 
   form.addEventListener("submit", (event) => {
-
+    
     event.preventDefault();
 
+
     const taskDescription = document.getElementById("new-task-description").value;
+    const taskUser = document.getElementById("task-user").value;
+    const taskDuration = document.getElementById("task-duration").value;
+    const taskDueDate = document.getElementById("task-due-date").value;
     const taskPriority = document.getElementById("task-priority").value;
 
     const newTaskItem = document.createElement("li");
-    newTaskItem.textContent = taskDescription;
+    newTaskItem.innerHTML = `<strong>${taskDescription}</strong> - User: ${taskUser}, Duration: ${taskDuration} hours, Due: ${taskDueDate}`;
 
+    // Assign priority color
     if (taskPriority === "high") {
       newTaskItem.style.color = "red";
     } else if (taskPriority === "medium") {
@@ -20,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newTaskItem.style.color = "green";
     }
 
-    // Create a delete button
+    // Create edit and delete buttons
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", () => {
@@ -51,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 
-
+  // Sorting functionality
   document.getElementById("sort-tasks").addEventListener("click", () => {
     const tasksArray = Array.from(taskList.children);
 
