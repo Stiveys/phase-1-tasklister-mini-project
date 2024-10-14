@@ -3,27 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskList = document.getElementById("tasks");
 
   form.addEventListener("submit", (event) => {
-    
     event.preventDefault();
-
 
     const taskDescription = document.getElementById("new-task-description").value;
     const taskUser = document.getElementById("task-user").value;
     const taskDuration = document.getElementById("task-duration").value;
     const taskDueDate = document.getElementById("task-due-date").value;
-    const taskPriority = document.getElementById("task-priority").value;
 
     const newTaskItem = document.createElement("li");
     newTaskItem.innerHTML = `<strong>${taskDescription}</strong> - User: ${taskUser}, Duration: ${taskDuration} hours, Due: ${taskDueDate}`;
-
-    // Assign priority color
-    if (taskPriority === "high") {
-      newTaskItem.style.color = "red";
-    } else if (taskPriority === "medium") {
-      newTaskItem.style.color = "yellow";
-    } else {
-      newTaskItem.style.color = "green";
-    }
 
     // Create edit and delete buttons
     const deleteButton = document.createElement("button");
@@ -32,38 +20,30 @@ document.addEventListener("DOMContentLoaded", () => {
       taskList.removeChild(newTaskItem);
     });
 
-
-
     const editButton = document.createElement("button");
     editButton.textContent = "Edit";
     editButton.addEventListener("click", () => {
       const newDescription = prompt("Edit your task:", taskDescription);
-
-
       if (newDescription) {
         newTaskItem.firstChild.textContent = newDescription;
       }
     });
 
-
     newTaskItem.appendChild(editButton);
     newTaskItem.appendChild(deleteButton);
 
-
     taskList.appendChild(newTaskItem);
-
-
     form.reset();
   });
 
-  // Sorting functionality
+  // Sorting functionality based on task duration
   document.getElementById("sort-tasks").addEventListener("click", () => {
     const tasksArray = Array.from(taskList.children);
 
     tasksArray.sort((a, b) => {
-      const priorityA = a.style.color === "red" ? 3 : a.style.color === "yellow" ? 2 : 1;
-      const priorityB = b.style.color === "red" ? 3 : b.style.color === "yellow" ? 2 : 1;
-      return priorityA - priorityB;
+      const durationA = parseInt(a.innerHTML.match(/Duration: (\d+)/)[1]);
+      const durationB = parseInt(b.innerHTML.match(/Duration: (\d+)/)[1]);
+      return durationA - durationB;
     });
 
     taskList.innerHTML = "";
